@@ -14,5 +14,5 @@
 ### Docs study : Create a website (02-17)
 
 <p align="center">
-  <img src="docs/ktor-task-web-app-demo.gif" width="600" alt="ktor-task-web-app demo"/>
+  <img src="docs/ktor-task-web-app-demo.gif" width="360" alt="ktor-task-web-app demo"/>
 </p>
