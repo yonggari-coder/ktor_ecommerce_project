@@ -25,3 +25,9 @@
 <p align="center">
     <img src="docs/websocket_demo.gif" width="360" alt="ktor-websockets-task-app demo"/>
 </p>
+
+## ktor-exposed-task-app
+### Docs Study : Integrate a database (02-18)
+
+<p align="center">
+    <img src="docs/integrate_db_demo.gif" width="420" alt="ktor-exposed-task-app demo"/>
