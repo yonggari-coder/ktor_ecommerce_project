@@ -4,39 +4,23 @@ This project was created using the [Ktor Project Generator](https://start.ktor.i
 
 Here are some useful links to get you started:
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
 
-## Features
+## Docs study - 공부한 내용 정리
+<details open>
+    <summary>Content Negotiation</summary>
+Content Negotiation 플러그인은 클라이언트가 렌더링을 할 수 있는 content의 타입을 보고,
+현재 서비스가 제공하는 content 타입과 매치시켜준다.  그래서 Content Negotiation이다.
 
-Here's a list of features included in this project:
+HTTP에서 클라이언트는 Accept header를 통해 렌더링할 수 있는 content 타입을 알려준다.
+이 값은 한 개의 타입일 수도 있고 여러 개의 타입일 수도 있다.
+브라우저에서 개발자 도구를 열어 쉽게 확인할 수 있다.
+`*/*` 표시는 HTML, XML, 이미지 뿐만 아니라 다른 어떤 타입들도 다 accept 가능하다.
 
-| Name                                                                   | Description                                                                        |
-| ------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [Static Content](https://start.ktor.io/p/static-content)               | Serves static files from defined locations                                         |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
+Content Negotiation plugin은 브라우저에 다시 되돌려줄 데이터 포맷을 찾아야 한다.
+브라우저의 요청같은 경우, ContentNegotiation plugin은 JSON만 반환할 수 있는 것을 알고 있다. (Serialization.kt 파일 참조)
+브라우저는 받은 내용을 화면에 표현하면 된다.
 
-## Building & Running
+(이해하기로, 서버 측에서 ContentNegotiation plugin을 통해 Json 형식으로 직렬화를 하고 이를 브라우저에게 보내면, 브라우저는 단순히 display만 하면 된다는 뜻 같다.)
 
-To build or run the project, use one of the following tasks:
-
-| Task                                    | Description                                                          |
-| -----------------------------------------|---------------------------------------------------------------------- |
-| `./gradlew test`                        | Run the tests                                                        |
-| `./gradlew build`                       | Build everything                                                     |
-| `./gradlew buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `./gradlew buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `./gradlew publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `./gradlew run`                         | Run the server                                                       |
-| `./gradlew runDocker`                   | Run using the local docker image                                     |
-
-If the server starts successfully, you'll see the following output:
-
-```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
-```
+</details>
 
