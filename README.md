@@ -7,3 +7,10 @@
 
 ## ktor-rest-task-app
 ### Docs study : Create a RESTful API (02-16)
+
+<hr>
+
+## ktor-task-web-app
+### Docs study : Create a website (02-17)
+
+![demo](docs/ktor-task-web-app-demo.gif)
