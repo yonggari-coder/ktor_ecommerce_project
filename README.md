@@ -1,1 +1,2 @@
-# ktor_ecommerce_project
+# yong-shopping
+this project is made of kotlin, ktor. 
