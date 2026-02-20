@@ -1,14 +1,134 @@
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <title>My sample</title>
+    <title> A simple page for testing Products!</title>
+    <script type="application/javascript">
+        function fetchAndDisplayProducts() {
+            fetchProducts()
+                .then(products => displayProducts(products))
+        }
+
+        function fetchProducts() {
+            return fetch(
+                "/product",
+                {
+                    headers: {'Accept': 'application/json'}
+                }
+            ).then(resp => resp.json());
+        }
+
+        function displayProducts(products){
+            const productsTableBody = document.getElementById("productsTableBody")
+            products.forEach(product => {
+                const newRow = productRow(product);
+                productsTableBody.appendChild(newRow);
+            });
+        }
+
+        function productRow(product) {
+            return tr([
+                td(product.name),
+                td(product.price),
+                td(product.description),
+                td(product.stock),
+                td(product.itemUrl),
+                td(product.imageUrl)
+            ]);
+        }
+
+        function tr(children) {
+            const node = document.createElement("tr")
+            children.forEach(child => node.appendChild(child));
+            return node;
+        }
+
+        function td(text) {
+            const node = document.createElement("td");
+            node.appendChild(document.createTextNode(text));
+            return node;
+        }
+        function addNewProduct(){
+            const product = buildProductFromForm();
+            sendPOST("/product", product).then(displayAllProducts);
+        }
+
+        function buildProductFromForm(){
+            return {
+                name: getProductFormValue("newProductName"),
+                price: getProductFormValue("newProductPrice"),
+                description: getProductFormValue("newProductDescription"),
+                stock: getProductFormValue("newProductStock"),
+                itemUrl: getProductFormValue("newProductItemUrl"),
+                imageUrl: getProductFormValue("newProductImageUrl")
+            }
+        }
+
+        function getProductFormValue(controlName) {
+            return document.addProductForm[controlName].value;
+        }
+
+        function sendPOST(url, data) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+        }
+        function clearProductsTable(){
+            productsTable().innerHTML = "";
+        }
+        function productsTable() {
+            return document.getElementById("productsTableBody")
+        }
+
+        function fetchAllProducts(){
+            return sendGET("/product")
+        }
+        function sendGET(url){
+            return fetch(
+                url,
+                {headers: {'Accept': 'application/json'}}
+            ).then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                return [];
+            });
+        }
+
+        function displayAllProducts() {
+            clearProductsTable();
+            fetchAllProducts().then(displayProducts)
+        }
+
+    </script>
 </head>
 <body>
-<h1>This page is built with:</h1>
-<ol>
-    <li>Ktor</li>
-    <li>Kotlin</li>
-    <li>HTML</li>
-</ol>
+    <h1>Viewing products via JS</h1>
+    <form action="javascript:displayAllProducts()">
+        <input type="submit" value="View the products">
+    </form>
+    <form name="addProductForm" action="javascript:addNewProduct()">
+        <span>Create new product with</span>
+        <label for="newProductName">name</label>
+        <input type="text" id="newProductName" name="newProductName" size="10">
+        <label for="newProductPrice">price</label>
+        <input type="text" id="newProductPrice" name="newProductPrice" size="10">
+        <label for="newProductDescription">description</label>
+        <input type="text" id="newProductDescription" name="newProductDescription" size="20">
+        <label for="newProductStock">stock</label>
+        <input type="text" id="newProductStock" name="newProductStock" size="5">
+        <label for="newProductItemUrl">itemUrl</label>
+        <input type="text" id="newProductItemUrl" name="newProductItemUrl" size="20">
+        <label for="newProductImageUrl">imageUrl</label>
+        <input type="text" id="newProductImageUrl" name="newProductImageUrl" size="20">
+        <input type="submit" value="ADD!~">
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr><th>Name</th><th>price</th><th>Description</th><th>stock</th><th>itemUrl</th><th>imageUrl</th></tr>
+        </thead>
+        <tbody id="productsTableBody"></tbody>
+    </table>
 </body>
 </html>
