@@ -16,3 +16,12 @@
 <p align="center">
   <img src="docs/ktor-task-web-app-demo.gif" width="360" alt="ktor-task-web-app demo"/>
 </p>
+
+<hr>
+
+## ktor-websockets-task-app
+### Docs Study : Create a Websocket application (02-18)
+
+<p align="center">
+    <img src="docs/websocket_demo.gif" width="360" alt="ktor-websockets-task-app demo"/>
+</p>
