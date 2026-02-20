@@ -13,4 +13,6 @@
 ## ktor-task-web-app
 ### Docs study : Create a website (02-17)
 
-![demo](docs/ktor-task-web-app-demo.gif)
+<p align="center">
+  <img src="docs/ktor-task-web-app-demo.gif" width="600" alt="ktor-task-web-app demo"/>
+</p>
