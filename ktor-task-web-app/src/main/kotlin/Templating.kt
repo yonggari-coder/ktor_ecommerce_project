@@ -1,10 +1,10 @@
 package com.example
 
-import Task
+import com.example.model.Priority
+import com.example.model.Task
 import com.example.model.TaskRepository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.*
-import io.ktor.server.http.content.*
 import io.ktor.server.request.receiveParameters
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

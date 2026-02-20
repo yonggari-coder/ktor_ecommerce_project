@@ -1,8 +1,5 @@
 package com.example.model
 
-import Priority
-import Task
-
 object TaskRepository {
     private val tasks = mutableListOf(
         Task("cleaning", "Clean the house", Priority.Low),
