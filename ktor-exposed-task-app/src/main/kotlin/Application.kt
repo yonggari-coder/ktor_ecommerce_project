@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.model.FakeTaskRepository
+import com.example.model.PostgresTaskRepository
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
@@ -8,7 +9,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    val repository = FakeTaskRepository()
+    val repository = PostgresTaskRepository()
 
     configureSerialization(repository)
     configureDatabases()
@@ -17,3 +18,5 @@ fun Application.module() {
 
 // this kt file shows "injecting an instance of FakeTaskRepository into configureSerialization().
 // It makes easy to replace FakeTaskRepository to PostgresTaskRepository.
+
+// Now, It replaces to PostgresTaskRepository.
